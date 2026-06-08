@@ -1,0 +1,89 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.page-header button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+}
+
+.page-header button:hover {
+  opacity: 0.9;
+}
+
+.total {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+.table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f8fafc;
+}
+
+th {
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+tbody tr {
+  border-top: 1px solid #e2e8f0;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+.badge-active {
+  background: #dcfce7;
+  color: #15803d;
+  padding: .35rem .75rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.badge-inactive {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: .35rem .75rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 600;
+}

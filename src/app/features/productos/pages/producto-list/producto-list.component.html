@@ -1,0 +1,63 @@
+<div class="page-header">
+
+  <h2>Productos</h2>
+
+  <button routerLink="/productos/nuevo">
+  + Nuevo Producto
+</button>
+
+</div>
+
+<p class="total">
+  Total productos: {{ productos().length }}
+</p>
+
+<div class="table-container">
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      @for (producto of productos(); track producto.uid) {
+
+        <tr>
+
+          <td>{{ producto.codigo }}</td>
+
+          <td>{{ producto.nombre }}</td>
+
+          <td>
+            S/ {{ producto.precio | number:'1.2-2' }}
+          </td>
+
+          <td>
+
+            <span
+              [class]="producto.activo
+                ? 'badge-active'
+                : 'badge-inactive'">
+
+              {{ producto.activo ? 'Activo' : 'Inactivo' }}
+
+            </span>
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>

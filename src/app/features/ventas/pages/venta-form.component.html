@@ -1,0 +1,280 @@
+<div class="page-container">
+
+  <div class="page-header">
+    <h2>Nueva Venta</h2>
+    <p>Registrar salida de productos</p>
+  </div>
+
+  <div class="form-card">
+
+    <form [formGroup]="form">
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Producto</label>
+
+          <select formControlName="productoId">
+
+            @for (producto of productos(); track producto.productoId) {
+
+              <option [value]="producto.productoId">
+                {{ producto.codigo }} - {{ producto.nombre }}
+              </option>
+
+            }
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Precio Unitario</label>
+
+          <input
+            type="number"
+            [value]="precioSeleccionado"
+            readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Stock Disponible</label>
+
+          <input
+            type="number"
+            [value]="stockDisponible()"
+            readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Cantidad</label>
+
+          <input
+            type="number"
+            formControlName="cantidad">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Observación</label>
+
+          <textarea
+            rows="4"
+            formControlName="observacion">
+          </textarea>
+        </div>
+
+      </div>
+
+      <!-- Calculo actual -->
+
+      <div class="summary-card">
+
+        <div class="summary-title">
+          Cálculo Actual
+        </div>
+
+        <div>
+          Subtotal:
+          {{ subtotalActual | number:'1.2-2' }}
+        </div>
+
+        <div>
+          IGV:
+          {{ igvActual | number:'1.2-2' }}
+        </div>
+
+        <div>
+          Total:
+          {{ totalActual | number:'1.2-2' }}
+        </div>
+
+      </div>
+
+      <!-- Toolbar -->
+
+      <div class="toolbar">
+
+        <div class="summary-inline">
+
+          <span>
+            Stock:
+            <strong>{{ stockDisponible() }}</strong>
+          </span>
+
+          <span>
+            Precio:
+            <strong>
+              {{ precioSeleccionado | number:'1.2-2' }}
+            </strong>
+          </span>
+
+        </div>
+
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="agregarProducto()">
+
+          + Agregar Producto
+
+        </button>
+
+      </div>
+
+      <!-- Tabla -->
+
+      <div class="detalle-card">
+
+        <table class="detalle-table">
+
+          <thead>
+
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+              <th>IGV</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            @for (item of detalles(); track $index) {
+
+              <tr>
+
+                <td>{{ item.nombre }}</td>
+
+                <td>
+                  {{ item.precioUnitario | number:'1.2-2' }}
+                </td>
+
+                <td>{{ item.cantidad }}</td>
+
+                <td>
+                  {{ item.subtotal | number:'1.2-2' }}
+                </td>
+
+                <td>
+                  {{ item.igv | number:'1.2-2' }}
+                </td>
+
+                <td>
+                  {{ item.total | number:'1.2-2' }}
+                </td>
+
+                <td>
+
+                  <button
+                    type="button"
+                    class="btn-delete"
+                    (click)="eliminar($index)">
+
+                    ✕
+
+                  </button>
+
+                </td>
+
+              </tr>
+
+            }
+
+            @if(detalles().length === 0) {
+
+              <tr>
+
+                <td
+                  colspan="7"
+                  class="empty-row">
+
+                  No hay productos agregados
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <!-- Totales finales -->
+
+      <div class="totales-wrapper">
+
+        <div class="totales-card">
+
+          <div class="summary-title">
+            Totales de la Venta
+          </div>
+
+          <div class="total-row">
+
+            <span>Subtotal</span>
+
+            <strong>
+              {{ subtotalGeneral | number:'1.2-2' }}
+            </strong>
+
+          </div>
+
+          <div class="total-row">
+
+            <span>IGV</span>
+
+            <strong>
+              {{ igvGeneral | number:'1.2-2' }}
+            </strong>
+
+          </div>
+
+          <div class="total-row grand-total">
+
+            <span>Total</span>
+
+            <strong>
+              {{ totalGeneral | number:'1.2-2' }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Acciones -->
+
+      <div class="actions">
+
+        <button
+          type="button"
+          class="btn-secondary"
+          routerLink="/dashboard">
+
+          Cancelar
+
+        </button>
+
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="save()">
+
+          Registrar Venta
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

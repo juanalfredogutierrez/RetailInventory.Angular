@@ -277,3 +277,11 @@ Proyecto desarrollado como parte de una evaluación técnica utilizando:
 * Microservicios
 * Clean Architecture
 * CQRS + MediatR
+
+<img width="464" height="669" alt="image" src="https://github.com/user-attachments/assets/d11e77fc-e372-4c0e-b74b-c23641d4ee3e" />
+
+<img width="1193" height="845" alt="image" src="https://github.com/user-attachments/assets/df3df82e-621a-4a3d-b4c0-5410f8eb42b9" />
+<img width="1177" height="1023" alt="image" src="https://github.com/user-attachments/assets/8db1a7ac-9b7b-4da2-a8a8-6f705f40f6ea" />
+
+
+

@@ -1,14 +1,59 @@
 # JMCloudLab Retail Inventory Platform - Web
 
-Frontend desarrollado con Angular 21 para la gestión de productos, compras y ventas dentro de una arquitectura basada en microservicios.
+## Overview
 
-La aplicación consume los servicios expuestos a través de un API Gateway (Ocelot) y utiliza autenticación JWT para proteger el acceso a las funcionalidades de negocio.
+Retail Inventory Platform Web is an enterprise frontend application built with Angular 21 following a Feature-Based Architecture approach and integrated with a distributed microservices ecosystem developed in .NET 8.
+
+The application provides a modern user experience for inventory management operations, including product administration, purchase registration, sales processing and stock monitoring through a centralized API Gateway.
+
+This project was developed as part of the JMCloudLab portfolio to demonstrate enterprise-grade frontend development practices, integration with distributed systems and secure communication with backend microservices.
 
 ---
 
-# Tecnologías Utilizadas
+## Key Features
 
-* Angular 21
+### Authentication & Security
+
+* JWT Authentication
+* Route Protection using Guards
+* Automatic Token Injection via HTTP Interceptors
+* Session Expiration Handling
+* Secure Login Workflow
+
+### Product Management
+
+* Product Registration
+* Product Listing
+* Inventory Integration
+
+### Purchase Management
+
+* Purchase Registration
+* Dynamic Product Selection
+* Real-Time Cost Calculation
+* Inventory Update Integration
+
+### Sales Management
+
+* Sales Registration
+* Stock Validation
+* Inventory Synchronization
+
+### User Experience
+
+* Responsive Layout
+* Sidebar Navigation
+* Feature-Based Routing
+* Reactive Forms
+* Centralized API Configuration
+
+---
+
+## Technology Stack
+
+### Frontend
+
+* Angular 21 (Standalone Components)
 * TypeScript
 * Angular Signals
 * Reactive Forms
@@ -16,15 +61,23 @@ La aplicación consume los servicios expuestos a través de un API Gateway (Ocel
 * Lazy Loading
 * Route Guards
 * HTTP Interceptors
+
+### Security
+
 * JWT Authentication
+* Authorization Guards
+
+### Integration
+
+* Ocelot API Gateway
+* REST APIs
+* Distributed Microservices Architecture
 
 ---
 
-# Arquitectura Frontend
+## Frontend Architecture
 
-La aplicación fue organizada utilizando una arquitectura modular basada en Features.
-
-Cada módulo funcional contiene sus propios modelos, servicios, páginas y rutas.
+The application follows a Feature-Based Architecture that promotes scalability, maintainability and separation of concerns.
 
 ```text
 src
@@ -37,166 +90,129 @@ src
 │   └── services
 │
 ├── features
-│   │
 │   ├── auth
-│   │   ├── models
-│   │   ├── services
-│   │   ├── pages
-│   │   └── auth.routes.ts
-│   │
 │   ├── dashboard
-│   │
 │   ├── productos
-│   │   ├── models
-│   │   ├── services
-│   │   ├── pages
-│   │   └── productos.routes.ts
-│   │
 │   ├── compras
-│   │   ├── models
-│   │   ├── services
-│   │   ├── pages
-│   │   └── compras.routes.ts
-│   │
-│   └── ventas
-│       ├── models
-│       ├── services
-│       ├── pages
-│       └── ventas.routes.ts
+│   ├── ventas
+│   └── kardex
 │
 ├── layout
 └── shared
 ```
 
-### Beneficios de esta estructura
+### Benefits
 
-* Separación de responsabilidades
-* Bajo acoplamiento
-* Alta cohesión
-* Escalabilidad por dominio funcional
-* Facilidad de mantenimiento
+* Low Coupling
+* High Cohesion
+* Feature Isolation
+* Better Scalability
+* Easier Maintenance
+* Enterprise-Ready Structure
 
 ---
 
-# Arquitectura General
+## System Architecture
 
 ```text
-┌─────────────────────────────┐
-│      Angular Frontend       │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│    API Gateway (Ocelot)     │
-└──────────────┬──────────────┘
-               │
-     ┌─────────┼─────────┐
-     │         │         │
-     ▼         ▼         ▼
+Angular Frontend
+        │
+        ▼
+API Gateway (Ocelot)
+        │
+ ┌──────┼──────┐
+ ▼      ▼      ▼
 
-┌─────────┐ ┌─────────┐ ┌─────────┐
-│  Auth   │ │Producto │ │ Compra  │
-│ Service │ │ Service │ │ Service │
-└─────────┘ └─────────┘ └────┬────┘
-                             │
-                             ▼
+Auth  Product  Transaction
+Svc   Service   Service
+                │
+                ▼
 
-                    ┌────────────────┐
-                    │ InventarioSvc  │
-                    └───────┬────────┘
-                            │
-                            ▼
+         Inventory Service
+                │
+                ▼
 
-                     ┌────────────┐
-                     │ RabbitMQ   │
-                     └─────┬──────┘
-                           │
-                           ▼
+            RabbitMQ
+                │
+                ▼
 
-                     ┌────────────┐
-                     │ SQL Server │
-                     └────────────┘
+          SQL Server
 ```
 
 ---
 
-# Seguridad
-
-La aplicación implementa autenticación basada en JWT.
-
-Características implementadas:
-
-* Login seguro
-* Route Guards
-* HTTP Interceptor
-* Protección de rutas privadas
-* Manejo de expiración de token
-* Redirección automática al Login cuando la sesión expira
-
----
-
-# Flujo de Autenticación
+## Authentication Flow
 
 ```text
-Usuario
-   │
-   ▼
+User
+ │
+ ▼
 
-Login
-   │
-   ▼
+Login Page
+ │
+ ▼
 
-AuthService
-   │
-   ▼
+Auth Service
+ │
+ ▼
 
-JWT
-   │
-   ▼
+JWT Token
+ │
+ ▼
 
-LocalStorage
-   │
-   ▼
+Local Storage
+ │
+ ▼
 
-AuthInterceptor
-   │
-   ▼
+Auth Interceptor
+ │
+ ▼
 
 API Gateway
+ │
+ ▼
+
+Microservices
 ```
 
 ---
 
-# Funcionalidades Implementadas
+## Application Modules
 
-## Dashboard
+### Dashboard
 
-* Sidebar de navegación
-* Topbar
-* Layout principal
+* Main Layout
+* Navigation Sidebar
+* Top Navigation Bar
 
-## Productos
+### Products
 
-* Listado de productos
-* Registro de productos
+* Product Management
+* Product Registration
+* Product Listing
 
-## Compras
+### Purchases
 
-* Registro de compras
-* Selección de productos
+* Purchase Creation
+* Dynamic Item Management
+* Cost Calculation
 
-## Ventas
+### Sales
 
-* Registro de ventas
-* Integración con inventario
+* Sales Registration
+* Inventory Validation
+* Stock Synchronization
+
+### Inventory
+
+* Stock Monitoring
+* Kardex Visualization
 
 ---
 
-# Configuración
+## Backend Integration
 
-La aplicación centraliza las rutas de acceso mediante constantes.
-
-Ejemplo:
+The frontend communicates exclusively through the API Gateway, which centralizes routing, security and service discovery.
 
 ```typescript
 export const API = {
@@ -204,23 +220,25 @@ export const API = {
 };
 ```
 
+This approach allows the frontend to remain decoupled from individual microservices.
+
 ---
 
-# Instalación
+## Installation
 
-Instalar dependencias:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Ejecutar aplicación:
+Run locally:
 
 ```bash
 ng serve
 ```
 
-Acceso:
+Application URL:
 
 ```text
 http://localhost:4200
@@ -228,60 +246,50 @@ http://localhost:4200
 
 ---
 
-# Credenciales de Prueba
+## Test Credentials
 
 ```text
-Usuario: admin
-Contraseña: Admin123*
+Username: admin
+Password: Admin123*
 ```
 
 ---
 
-# Consideraciones
+## Future Improvements
 
-Debido al tiempo limitado de la evaluación técnica, se priorizó:
-
-* Arquitectura por Features
-* Integración con microservicios
-* Seguridad mediante JWT
-* Flujos funcionales principales
-* Escalabilidad y mantenibilidad de la solución
-
-No se implementaron pruebas unitarias en esta iteración debido a la restricción de tiempo de la evaluación.
+* Unit Testing (Jasmine/Karma)
+* End-to-End Testing
+* State Management
+* Dark Mode Support
+* Real-Time Dashboard
+* Responsive Improvements
+* Shared Component Library
 
 ---
 
-# Mejoras Futuras
+## Related Backend Technologies
 
-* Pruebas Unitarias
-* Pruebas E2E
-* Dashboard con métricas en tiempo real
-* Gestión avanzada de inventario
-* Optimización responsive
-* Componentes reutilizables adicionales
+This frontend integrates with a distributed backend platform built using:
 
----
-
-# Autor
-
-**Juan Gutierrez**
-
-Desarrollador .NET & Angular
-
-Proyecto desarrollado como parte de una evaluación técnica utilizando:
-
-* Angular 21
-* JWT Authentication
-* API Gateway (Ocelot)
-* RabbitMQ
-* Microservicios
+* .NET 8
 * Clean Architecture
-* CQRS + MediatR
+* CQRS
+* MediatR
+* RabbitMQ
+* Outbox Pattern
+* Inbox Pattern
+* Ocelot API Gateway
+* Docker Compose
+* Serilog
+* Seq
+* Distributed Tracing
 
-<img width="464" height="669" alt="image" src="https://github.com/user-attachments/assets/d11e77fc-e372-4c0e-b74b-c23641d4ee3e" />
+---
 
-<img width="1193" height="845" alt="image" src="https://github.com/user-attachments/assets/df3df82e-621a-4a3d-b4c0-5410f8eb42b9" />
-<img width="1177" height="1023" alt="image" src="https://github.com/user-attachments/assets/8db1a7ac-9b7b-4da2-a8a8-6f705f40f6ea" />
+## Author
 
+Juan Alfredo Gutierrez
 
+Senior Software Engineer | Technical Leader
 
+Specialized in .NET, Angular, Azure, Distributed Systems and Financial Platforms.

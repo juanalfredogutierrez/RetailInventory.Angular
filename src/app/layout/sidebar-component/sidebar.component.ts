@@ -1,43 +1,59 @@
-import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-interface NavigationItem {
-  icon: string;
+import {
+  LucideAngularModule,
+  LayoutDashboard,
+  Package,
+  ShoppingCart,
+  ReceiptText,
+  Boxes,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-angular';
+
+interface MenuItem {
   label: string;
   route: string;
+  icon: any;
 }
 
 @Component({
-  selector: 'app-sidebar-component',
-  imports: [RouterLink, RouterLinkActive],
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    LucideAngularModule
+  ],
   templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-protected readonly navigationItems = signal<NavigationItem[]>([
-  {
-    icon: '⌂',
-    label: 'Dashboard',
-    route: '/dashboard'
-  },
-  {
-    icon: '□',
-    label: 'Productos',
-    route: '/productos'
-  },
-  {
-    icon: '⇄',
-    label: 'Compras',
-    route: '/compras'
-  },
-  {
-    icon: '▤',
-    label: 'Ventas',
-    route: '/ventas'
-  },
-  {
-    icon: '□',
-    label: 'Kardex',
-    route: '/kardex'
+  @Input() collapsed = false;
+  @Input() mobileOpen = false;
+
+  @Output() toggleSidebar = new EventEmitter<void>();
+  @Output() closeMobileSidebar = new EventEmitter<void>();
+
+  readonly ChevronLeft = ChevronLeft;
+  readonly ChevronRight = ChevronRight;
+
+  menuItems: MenuItem[] = [
+    { label: 'Dashboard', route: '/dashboard', icon: LayoutDashboard },
+    { label: 'Productos', route: '/productos', icon: Package },
+    { label: 'Compras', route: '/compras', icon: ShoppingCart },
+    { label: 'Ventas', route: '/ventas', icon: ReceiptText },
+    { label: 'Kardex', route: '/kardex', icon: Boxes }
+  ];
+
+  handleToggleSidebar(): void {
+    this.toggleSidebar.emit();
   }
-]);
+
+  handleCloseMobile(): void {
+    this.closeMobileSidebar.emit();
+  }
 }

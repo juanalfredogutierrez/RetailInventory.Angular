@@ -1,0 +1,155 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/radius' as *;
+@use '../abstracts/shadow' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: $space-2;
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: $text-secondary;
+}
+
+.form-label span {
+  color: $text-disabled;
+  font-weight: $font-medium;
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.form-control,
+input,
+select,
+textarea {
+
+  width: 100%;
+
+  font-family: $font-family;
+  font-size: $text-md;
+  color: $text-primary;
+
+  background: $surface;
+
+  border: 1px solid $border;
+
+  border-radius: $radius-md;
+
+  transition: all .20s ease;
+
+}
+
+input,
+select{
+
+  height:40px;
+
+  padding:0 $space-3;
+
+}
+
+textarea{
+
+  min-height:80px;
+
+  padding:$space-3;
+
+  resize:vertical;
+
+}
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+input:focus,
+select:focus,
+textarea:focus{
+
+  outline:none;
+
+  border-color:$primary;
+
+  box-shadow:0 0 0 3px rgba(37,99,235,.12);
+
+}
+
+/* ==========================================================
+   READONLY
+========================================================== */
+
+input[readonly],
+.readonly-input{
+
+  background:$surface-alt;
+
+  color:$text-secondary;
+
+  cursor:not-allowed;
+
+}
+
+/* ==========================================================
+   PLACEHOLDER
+========================================================== */
+
+::placeholder{
+
+  color:$text-disabled;
+
+}
+
+/* ==========================================================
+   INVALID
+========================================================== */
+
+.is-invalid{
+
+  border-color:$danger !important;
+
+}
+
+.is-invalid:focus{
+
+  box-shadow:0 0 0 3px rgba(239,68,68,.12);
+
+}
+
+/* ==========================================================
+   ERROR
+========================================================== */
+
+.form-error{
+
+  margin-top:$space-2;
+
+  font-size:$text-xs;
+
+  color:$danger;
+
+}
+
+/* ==========================================================
+   HELP
+========================================================== */
+
+.form-help{
+
+  margin-top:$space-2;
+
+  font-size:$text-xs;
+
+  color:$text-muted;
+
+}

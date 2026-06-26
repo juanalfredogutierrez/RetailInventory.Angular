@@ -1,0 +1,230 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/radius' as *;
+@use '../abstracts/shadow' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   MODAL OVERLAY
+========================================================== */
+
+.modal-overlay {
+
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: $space-5;
+
+  background: rgba(15, 23, 42, .55);
+
+  backdrop-filter: blur(4px);
+
+  z-index: 1050;
+
+  animation: modalFade .18s ease;
+
+}
+
+/* ==========================================================
+   MODAL
+========================================================== */
+
+.modal {
+
+  width: 100%;
+  max-width: 620px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: $surface;
+
+  border-radius: $radius-xl;
+
+  box-shadow: $shadow-xl;
+
+  overflow: hidden;
+
+  animation: modalScale .20s ease;
+
+}
+
+/* ==========================================================
+   SIZES
+========================================================== */
+
+.modal-sm {
+
+  max-width: 420px;
+
+}
+
+.modal-md {
+
+  max-width: 620px;
+
+}
+
+.modal-lg {
+
+  max-width: 900px;
+
+}
+
+.modal-xl {
+
+  max-width: 1100px;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.modal-header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: $space-5;
+
+  border-bottom: 1px solid $border-light;
+
+}
+
+.modal-title {
+
+  margin: 0;
+
+  color: $text-primary;
+
+  font-size: $text-xl;
+
+  font-weight: $font-bold;
+
+}
+
+.modal-close {
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: $radius-md;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  color: $text-secondary;
+
+  transition: .20s ease;
+
+}
+
+.modal-close:hover {
+
+  background: $surface-alt;
+
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+.modal-body {
+
+  padding: $space-5;
+
+  overflow: auto;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.modal-footer {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: $space-3;
+
+  padding: $space-5;
+
+  border-top: 1px solid $border-light;
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes modalFade {
+
+  from {
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+
+}
+
+@keyframes modalScale {
+
+  from {
+
+    opacity: 0;
+
+    transform: scale(.96);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+  }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:768px){
+
+  .modal{
+
+    max-width:100%;
+
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer{
+
+    padding:$space-4;
+
+  }
+
+}

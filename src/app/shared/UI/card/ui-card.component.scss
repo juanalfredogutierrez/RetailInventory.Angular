@@ -1,0 +1,111 @@
+:host{
+    display:block;
+}
+
+.ui-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    border:1px solid #e8edf5;
+
+    transition:.25s;
+
+}
+
+/*==========================
+PADDING
+===========================*/
+
+.padding-none{
+    padding:0;
+}
+
+.padding-sm{
+    padding:12px;
+}
+
+.padding-md{
+    padding:20px;
+}
+
+.padding-lg{
+    padding:28px;
+}
+
+/*==========================
+SHADOW
+===========================*/
+
+.shadow-none{
+    box-shadow:none;
+}
+
+.shadow-sm{
+    box-shadow:0 2px 6px rgba(15,23,42,.05);
+}
+
+.shadow-md{
+    box-shadow:0 6px 20px rgba(15,23,42,.08);
+}
+
+.shadow-lg{
+    box-shadow:0 12px 30px rgba(15,23,42,.12);
+}
+
+/*==========================
+VARIANTS
+===========================*/
+
+.variant-outlined{
+
+    background:white;
+
+    border:2px solid #dbe5f2;
+
+}
+
+.variant-filled{
+
+    background:#f8fbff;
+
+}
+
+/*==========================
+HEADER
+===========================*/
+
+.ui-card-header{
+
+    margin-bottom:18px;
+
+}
+
+.ui-card-header h3{
+
+    margin:0;
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+.ui-card-header p{
+
+    margin-top:4px;
+
+    color:#64748b;
+
+    font-size:.88rem;
+
+}
+
+.ui-card-content{
+
+    display:block;
+
+}

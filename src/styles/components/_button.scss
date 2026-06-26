@@ -1,0 +1,194 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/radius' as *;
+@use '../abstracts/shadow' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.btn {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  border-radius: $radius-md;
+
+  font-family: $font-family;
+  font-weight: $font-semibold;
+
+  transition: all .20s ease;
+
+  white-space: nowrap;
+  user-select: none;
+
+}
+
+/* ==========================================================
+   SIZES
+========================================================== */
+
+.btn-sm {
+
+  height: 34px;
+  padding: 0 $space-3;
+  font-size: $text-sm;
+
+}
+
+.btn-md {
+
+  height: 40px;
+  padding: 0 $space-4;
+  font-size: $text-md;
+
+}
+
+.btn-lg {
+
+  height: 46px;
+  padding: 0 $space-5;
+  font-size: $text-lg;
+
+}
+
+/* ==========================================================
+   PRIMARY
+========================================================== */
+
+.btn-primary {
+
+  background: $primary;
+  color: white;
+
+  box-shadow: $shadow-sm;
+
+}
+
+.btn-primary:hover {
+
+  background: $primary-hover;
+
+}
+
+.btn-primary:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   SECONDARY
+========================================================== */
+
+.btn-secondary {
+
+  background: #e2e8f0;
+  color: $text-secondary;
+
+}
+
+.btn-secondary:hover {
+
+  background: #d5dde8;
+
+}
+
+/* ==========================================================
+   SUCCESS
+========================================================== */
+
+.btn-success {
+
+  background: $success;
+  color: white;
+
+}
+
+.btn-success:hover {
+
+  background: $success-hover;
+
+}
+
+/* ==========================================================
+   WARNING
+========================================================== */
+
+.btn-warning {
+
+  background: $warning;
+  color: white;
+
+}
+
+.btn-warning:hover {
+
+  background: $warning-hover;
+
+}
+
+/* ==========================================================
+   DANGER
+========================================================== */
+
+.btn-danger {
+
+  background: $danger;
+  color: white;
+
+}
+
+.btn-danger:hover {
+
+  background: $danger-hover;
+
+}
+
+/* ==========================================================
+   GHOST
+========================================================== */
+
+.btn-ghost {
+
+  background: transparent;
+  color: $text-secondary;
+
+}
+
+.btn-ghost:hover {
+
+  background: $surface-alt;
+
+}
+
+/* ==========================================================
+   FULL WIDTH
+========================================================== */
+
+.btn-block{
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   DISABLED
+========================================================== */
+
+.btn:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    pointer-events:none;
+
+}

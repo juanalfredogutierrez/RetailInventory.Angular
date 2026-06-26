@@ -1,0 +1,89 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.page-container {
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: $space-4;
+
+}
+
+.page-header {
+
+  margin-bottom: $space-5;
+
+}
+
+.page-title {
+
+  margin: 0;
+
+  color: $text-primary;
+
+  font-size: $text-2xl;
+
+  font-weight: $font-extrabold;
+
+  line-height: 1.2;
+
+}
+
+.page-subtitle {
+
+  margin-top: $space-2;
+
+  color: $text-muted;
+
+  font-size: $text-md;
+
+}
+
+.page-layout {
+
+  display: grid;
+
+  gap: $space-5;
+
+}
+
+.page-layout-sidebar {
+
+  grid-template-columns: minmax(0,1fr) 280px;
+
+}
+
+.page-content{
+
+  min-width:0;
+
+}
+
+.page-sidebar{
+
+  min-width:260px;
+
+}
+
+@media (max-width:1100px){
+
+  .page-layout-sidebar{
+
+    grid-template-columns:1fr;
+
+  }
+
+  .page-sidebar{
+
+    min-width:100%;
+
+  }
+
+}

@@ -1,0 +1,60 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/radius' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   ALERT
+========================================================== */
+
+.alert{
+
+  padding:$space-4;
+
+  border-radius:$radius-lg;
+
+  border-left:4px solid;
+
+  font-size:$text-md;
+
+}
+
+.alert-success{
+
+  background:#ecfdf5;
+
+  border-color:$success;
+
+  color:#166534;
+
+}
+
+.alert-warning{
+
+  background:#fffbeb;
+
+  border-color:$warning;
+
+  color:#92400e;
+
+}
+
+.alert-danger{
+
+  background:#fef2f2;
+
+  border-color:$danger;
+
+  color:#991b1b;
+
+}
+
+.alert-info{
+
+  background:#eff6ff;
+
+  border-color:$primary;
+
+  color:#1e40af;
+
+}

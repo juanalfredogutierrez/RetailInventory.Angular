@@ -1,0 +1,186 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/radius' as *;
+@use '../abstracts/shadow' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   TABLE WRAPPER
+========================================================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: $surface;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.table thead th {
+
+  padding: $space-3 $space-4;
+
+  background: $header-bg;
+
+  color: white;
+
+  font-size: $text-sm;
+
+  font-weight: $font-bold;
+
+  text-align: left;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+}
+
+.table thead th:first-child {
+
+  border-top-left-radius: $radius-md;
+
+}
+
+.table thead th:last-child {
+
+  border-top-right-radius: $radius-md;
+
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+.table tbody td {
+
+  padding: $space-3 $space-4;
+
+  font-size: $text-md;
+
+  color: $text-secondary;
+
+  border-bottom: 1px solid $border-light;
+
+  background: $surface;
+
+  vertical-align: middle;
+
+}
+
+.table tbody tr {
+
+  transition: background .20s ease;
+
+}
+
+.table tbody tr:hover td {
+
+  background: $surface-alt;
+
+}
+
+.table tbody tr:last-child td {
+
+  border-bottom: none;
+
+}
+
+/* ==========================================================
+   HELPERS
+========================================================== */
+
+.table .text-center {
+
+  text-align: center;
+
+}
+
+.table .text-right {
+
+  text-align: right;
+
+}
+
+.table .text-left {
+
+  text-align: left;
+
+}
+
+/* ==========================================================
+   EMPHASIS
+========================================================== */
+
+.table strong {
+
+  color: $text-primary;
+
+  font-weight: $font-bold;
+
+}
+
+/* ==========================================================
+   EMPTY
+========================================================== */
+
+.table-empty {
+
+  padding: $space-7;
+
+  text-align: center;
+
+  color: $text-muted;
+
+  font-size: $text-md;
+
+}
+
+/* ==========================================================
+   COMPACT
+========================================================== */
+
+.table-sm thead th {
+
+  padding: $space-2 $space-3;
+
+}
+
+.table-sm tbody td {
+
+  padding: $space-2 $space-3;
+
+}
+
+/* ==========================================================
+   STRIPED
+========================================================== */
+
+.table-striped tbody tr:nth-child(even) td {
+
+  background: #fbfdff;
+
+}
+
+/* ==========================================================
+   BORDERED
+========================================================== */
+
+.table-bordered td,
+.table-bordered th {
+
+  border: 1px solid $border-light;
+
+}

@@ -1,0 +1,140 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/radius' as *;
+@use '../abstracts/shadow' as *;
+@use '../abstracts/spacing' as *;
+@use '../abstracts/typography' as *;
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card {
+
+  display: flex;
+  flex-direction: column;
+
+  background: $surface;
+
+  border: 1px solid $border-light;
+
+  border-radius: $radius-lg;
+
+  box-shadow: $shadow-sm;
+
+  transition: .20s ease;
+
+}
+
+.card:hover{
+
+  box-shadow: $shadow-md;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.card-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:$space-4;
+
+  margin-bottom:$space-4;
+
+}
+
+.card-title{
+
+  margin:0;
+
+  font-size:$text-lg;
+
+  font-weight:$font-bold;
+
+  color:$text-primary;
+
+}
+
+.card-subtitle{
+
+  margin-top:4px;
+
+  font-size:$text-sm;
+
+  color:$text-muted;
+
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+.card-body{
+
+  flex:1;
+
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.card-footer{
+
+  margin-top:$space-5;
+
+  padding-top:$space-4;
+
+  border-top:1px solid $border-light;
+
+}
+
+/* ==========================================================
+   PADDING
+========================================================== */
+
+.card-sm{
+
+  padding:$space-3;
+
+}
+
+.card-md{
+
+  padding:$space-5;
+
+}
+
+.card-lg{
+
+  padding:$space-6;
+
+}
+
+/* ==========================================================
+   VARIANTS
+========================================================== */
+
+.card-flat{
+
+  box-shadow:none;
+
+}
+
+.card-bordered{
+
+  border:2px solid $border;
+
+}
+
+.card-primary{
+
+  border-left:4px solid $primary;
+
+}

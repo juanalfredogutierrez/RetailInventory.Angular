@@ -95,9 +95,6 @@ export class VentaFormComponent implements OnInit {
         },
 
         error: error => {
-
-          console.error(error);
-
           this.stockDisponible.set(0);
         }
       });
@@ -294,10 +291,7 @@ export class VentaFormComponent implements OnInit {
         }))
     };
 
-    console.log(
-      'VENTA REQUEST',
-      request
-    );
+
 
     this.ventaService
       .create(request)
@@ -315,8 +309,6 @@ export class VentaFormComponent implements OnInit {
         },
 
         error: error => {
-
-          console.error(error);
 
           if (
             error?.error?.errors?.length > 0

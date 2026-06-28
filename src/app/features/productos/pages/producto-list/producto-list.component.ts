@@ -19,15 +19,13 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    JsonPipe,
     RouterLink
-  ],
+],
   templateUrl: './producto-list.component.html',
   styleUrl: './producto-list.component.scss'
 })
 export class ProductoListComponent implements OnInit {
 constructor() {
- console.log('CONSTRUCTOR PRODUCTOS', performance.now());
 }
   private readonly productoService =
     inject(ProductoService);
@@ -35,7 +33,6 @@ constructor() {
   productos = signal<Producto[]>([]);
 
 ngOnInit(): void {
-  console.log('NGONINIT PRODUCTOS', performance.now());
 
   this.loadProductos();
 }
@@ -49,8 +46,10 @@ ngOnInit(): void {
           response.data
         );
 
-     
-      console.log('DESPUES API', performance.now());
       });
+  }
+
+  eliminar(x:number){
+
   }
 }

@@ -266,10 +266,6 @@ export class CompraFormComponent implements OnInit {
         }))
     };
 
-    console.log(
-      'COMPRA REQUEST',
-      request
-    );
 
     this.compraService
       .create(request)

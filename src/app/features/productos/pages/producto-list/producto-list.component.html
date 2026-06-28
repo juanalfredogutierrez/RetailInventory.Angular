@@ -1,63 +1,205 @@
-<div class="page-header">
+<div class="page-container">
 
-  <h2>Productos</h2>
+  <!-- HEADER -->
+  <div class="page-header">
 
-  <button routerLink="/productos/nuevo">
-  + Nuevo Producto
-</button>
+    <h1>Productos</h1>
 
-</div>
+    <p>
+      Gestiona el catálogo de productos del sistema.
+    </p>
 
-<p class="total">
-  Total productos: {{ productos().length }}
-</p>
+  </div>
 
-<div class="table-container">
+  <!-- CARD PRINCIPAL -->
+  <div class="form-card">
 
-  <table>
+    <!-- TOOLBAR -->
+    <div class="section-header">
 
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
+      <div>
 
-    <tbody>
+        <h3>Catálogo de productos</h3>
 
-      @for (producto of productos(); track producto.uid) {
+        <p>
+          Consulta y administra los productos registrados.
+        </p>
 
-        <tr>
+      </div>
 
-          <td>{{ producto.codigo }}</td>
+      <button
+        class="btn-primary btn-sm"
+        routerLink="/productos/nuevo">
 
-          <td>{{ producto.nombre }}</td>
+        + Nuevo producto
 
-          <td>
-            S/ {{ producto.precio | number:'1.2-2' }}
-          </td>
+      </button>
 
-          <td>
+    </div>
 
-            <span
-              [class]="producto.activo
+    <!-- Toolbar -->
+    <div class="catalog-toolbar">
+
+      <!-- Buscar -->
+      <div class="search-box">
+
+        <input
+          type="text"
+          placeholder="Buscar por código o nombre..."
+          >
+
+      </div>
+
+      <!-- Estado -->
+      <div class="filter-box">
+
+        <select disabled>
+
+          <option>Todos</option>
+          <option>Activo</option>
+          <option>Inactivo</option>
+
+        </select>
+
+      </div>
+
+      <!-- Información -->
+      <div class="detalle-info">
+
+        <strong>{{ productos().length }}</strong>
+
+        <span>Mostrando</span>
+
+      </div>
+
+    </div>
+
+    <!-- TABLA -->
+    <div class="table-wrapper">
+
+      <table class="detalle-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Código</th>
+
+            <th>Producto</th>
+
+            <th>Precio</th>
+
+            <th>Estado</th>
+
+            <th>Acción</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for (producto of productos(); track producto.uid) {
+
+          <tr>
+
+             <td class="cell-codigo">
+
+              {{ producto.codigo }}
+
+            </td>
+
+            <td class="cell-product">
+
+              {{ producto.nombre }}
+
+            </td>
+
+            <td class="cell-precio">
+
+              S/
+              {{ producto.precio | number:'1.2-2' }}
+
+            </td>
+
+            <td>
+
+              <span
+                [class]="producto.activo
                 ? 'badge-active'
                 : 'badge-inactive'">
 
-              {{ producto.activo ? 'Activo' : 'Inactivo' }}
+                {{ producto.activo ? 'Activo' : 'Inactivo' }}
 
-            </span>
+              </span>
 
-          </td>
+            </td>
 
-        </tr>
+            <td class="action-cell">
 
-      }
+                   <button type="button" class="btn-delete" (click)="eliminar($index)" title="Eliminar">
 
-    </tbody>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
 
-  </table>
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4h8v2" />
+                      <path d="M19 6l-1 14H6L5 6" />
+                      <path d="M10 11v6" />
+                      <path d="M14 11v6" />
+
+                    </svg>
+
+                  </button>
+
+            </td>
+
+          </tr>
+
+          }
+
+          @if(productos().length===0){
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="empty-row">
+
+              📦 No existen productos registrados.
+
+            </td>
+
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- PAGINACIÓN (Visual por ahora) -->
+
+<div class="pagination-wrapper">
+
+  <div class="pagination">
+
+    <button>← Anterior</button>
+
+    <button class="active">1</button>
+
+    <button>2</button>
+
+    <button>3</button>
+
+    <button>Siguiente →</button>
+
+  </div>
+
+</div>
+
+  </div>
 
 </div>

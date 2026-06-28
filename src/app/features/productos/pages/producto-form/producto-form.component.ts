@@ -19,7 +19,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ProductoFormComponent {
   constructor() {
-    console.log('CONSTRUCTOR PRODUCTOS', new Date());
+  
   }
 
 

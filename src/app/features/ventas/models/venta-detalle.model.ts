@@ -1,6 +1,5 @@
-import { VentaDetalle } from "./venta-request.model";
-
-export interface VentaRequest {
-  observacion: string;
-  detalles: VentaDetalle[];
+export interface VentaDetalle {
+  productoId: number;
+  cantidad: number;
+  precioUnitario: number;
 }

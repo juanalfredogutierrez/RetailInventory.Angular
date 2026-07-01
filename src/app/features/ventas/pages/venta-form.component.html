@@ -33,9 +33,9 @@
 
                 @for (producto of productos(); track producto.productoId) {
 
-                  <option [value]="producto.productoId">
-                    {{ producto.codigo }} - {{ producto.nombre }}
-                  </option>
+                <option [ngValue]="producto.productoId">
+                  {{ producto.codigo }} - {{ producto.nombre }}
+                </option>
 
                 }
 
@@ -47,11 +47,7 @@
             <div class="form-group span-3">
               <label>Precio Unitario</label>
 
-              <input
-                type="number"
-                [value]="precioSeleccionado"
-                readonly
-                class="readonly-input">
+              <input type="number" [value]="precioSeleccionado" readonly class="readonly-input">
 
             </div>
 
@@ -59,9 +55,7 @@
             <div class="form-group span-7">
               <label>Cantidad</label>
 
-              <input
-                type="number"
-                formControlName="cantidad">
+              <input type="number" formControlName="cantidad">
 
             </div>
 
@@ -69,11 +63,7 @@
             <div class="form-group span-3">
               <label>Stock disponible</label>
 
-              <input
-                type="number"
-                [value]="stockDisponible()"
-                readonly
-                class="readonly-input">
+              <input type="number" [value]="stockDisponible()" readonly class="readonly-input">
 
             </div>
 
@@ -82,10 +72,7 @@
 
               <label>Observación <span>(opcional)</span></label>
 
-              <textarea
-                rows="2"
-                formControlName="observacion"
-                placeholder="Agrega una observación si aplica...">
+              <textarea rows="2" formControlName="observacion" placeholder="Agrega una observación si aplica...">
               </textarea>
 
             </div>
@@ -110,10 +97,7 @@
               <strong>{{ totalActual | number:'1.2-2' }}</strong>
             </div>
 
-            <button
-              type="button"
-              class="btn-primary btn-add"
-              (click)="agregarProducto()">
+            <button type="button" class="btn-primary btn-add" (click)="agregarProducto()">
 
               Agregar
 
@@ -196,7 +180,7 @@
 
                 <td class="action-cell">
 
-                     <button type="button" class="btn-delete" (click)="eliminar($index)" title="Eliminar">
+                  <button type="button" class="btn-delete" (click)="eliminar($index)" title="Eliminar">
 
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                       stroke-linecap="round" stroke-linejoin="round">
@@ -221,9 +205,7 @@
 
               <tr>
 
-                <td
-                  colspan="7"
-                  class="empty-row">
+                <td colspan="7" class="empty-row">
 
                   📦 No hay productos agregados.
                   Selecciona un producto y presiona
@@ -288,20 +270,13 @@
 
         <div class="sidebar-actions">
 
-          <button
-            type="button"
-            class="btn-secondary btn-block"
-            routerLink="/dashboard">
+          <button type="button" class="btn-secondary btn-block" routerLink="/dashboard">
 
             Cancelar
 
           </button>
 
-          <button
-            type="button"
-            class="btn-primary btn-block"
-            [disabled]="detalles().length===0"
-            (click)="save()">
+          <button type="button" class="btn-primary btn-block" [disabled]="detalles().length===0" (click)="save()">
 
             Registrar Venta
 

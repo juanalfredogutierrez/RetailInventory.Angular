@@ -13,6 +13,7 @@ import {
   PanelLeftOpen
 } from 'lucide-angular';
 import { TokenService } from '../../core/services/token.service';
+import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 
 interface BreadcrumbItem {
   label: string;
@@ -22,7 +23,7 @@ interface BreadcrumbItem {
 @Component({
   selector: 'app-topbar-component',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule,UserMenuComponent],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
 })

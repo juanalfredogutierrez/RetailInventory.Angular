@@ -41,16 +41,7 @@
       <span class="topbar__badge">3</span>
     </button>
 
-    <div class="topbar__user">
-
-      <div class="topbar__avatar"> {{ avatar }}</div>
-
-      <div class="topbar__user-meta">
-        <strong>{{ currentUser()?.userName }}</strong>
-       <span>{{ displayRole }}</span>
-      </div>
-
-    </div>
+    <app-user-menu></app-user-menu>
 
   </div>
 

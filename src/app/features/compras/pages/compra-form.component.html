@@ -34,7 +34,7 @@
               <label>Producto</label>
               <select formControlName="productoId">
                 @for (producto of productos(); track producto.productoId) {
-                <option [value]="producto.productoId">
+                <option [ngValue]="producto.productoId">
                   {{ producto.codigo }} - {{ producto.nombre }}
                 </option>
                 }

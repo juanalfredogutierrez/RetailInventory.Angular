@@ -16,9 +16,12 @@ import { ProductoService } from '../../productos/services/producto.service';
 import { VentaService } from '../services/venta.service';
 import { VentaFormState } from '../state/venta-form.state';
 import { Producto } from '../models/producto.model';
-import { VentaRequest } from '../models/venta-model';
+
 import { VentaDetalleItem } from '../models/venta-detalle-item.model';
 import { IGV } from '../constants/venta.constants';
+import { VentaRequest } from '../models/venta-request.model';
+import { NotificationService } from '../../../core/shared/services/notification.service';
+import { ConfirmDialogService } from '../../../core/shared/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-venta-form',
@@ -35,6 +38,9 @@ import { IGV } from '../constants/venta.constants';
   styleUrl: './venta-form.component.scss'
 })
 export class VentaFormComponent implements OnInit {
+
+  private readonly confirmDialog = inject(ConfirmDialogService);
+  private readonly notification = inject(NotificationService);
   private readonly fb = inject(FormBuilder);
   private readonly productoService = inject(ProductoService);
   private readonly ventaService = inject(VentaService);
@@ -122,7 +128,7 @@ export class VentaFormComponent implements OnInit {
   agregarProducto(): void {
     const producto = this.productoSeleccionado;
     if (!producto) {
-      alert('Debe seleccionar un producto');
+      this.notification.warning('Debe seleccionar un producto');
       return;
     }
 
@@ -133,7 +139,7 @@ export class VentaFormComponent implements OnInit {
     );
 
     if (error) {
-      alert(error);
+      this.notification.warning(error);
       return;
     }
 
@@ -146,44 +152,73 @@ export class VentaFormComponent implements OnInit {
   }
 
   save(): void {
+
     if (this.detalles().length === 0) {
-      alert(
+      this.notification.warning(
         'Debe agregar al menos un producto'
       );
       return;
     }
 
-    const request = this.buildRequest();
+    this.confirmDialog
+      .confirm({
+        title: 'Registrar venta',
+        message: '¿Desea registrar esta venta?',
+        confirmText: 'Registrar'
+      })
+      .subscribe(confirmado => {
 
+        if (!confirmado) {
+          return;
+        }
+
+        this.registrarVenta();
+
+      });
+
+  }
+
+  private registrarVenta(): void {
+    const request = this.buildRequest();
     this.ventaService
       .create(request)
       .subscribe({
         next: () => {
-          alert(
-            'Venta registrada'
-          );
-          this.router.navigate([
-            '/dashboard'
-          ]);
+          this.notification
+            .success('Venta registrada')
+            .afterDismissed()
+            .subscribe(() => {
+
+              this.router.navigate([
+                '/dashboard'
+              ]);
+
+            });
+
         },
 
         error: error => {
-          if (
-            error?.error?.errors?.length > 0
-          ) {
-            alert(
-              error.error.errors
-                .map((x: any) => x.message)
-                .join('\n')
+          if (error?.error?.errors?.length > 0) {
+
+            const errorMessages = error.error.errors
+              .map((x: { message: string }) => x.message)
+              .join('\n');
+
+            this.notification.error(
+              errorMessages
             );
             return;
           }
 
-          alert(
+          this.notification.errorFromApi(
+            error,
             'Error al registrar la venta'
           );
+
         }
+
       });
+
   }
 
   private calcularTotal(selector: (item: VentaDetalleItem) => number): number {

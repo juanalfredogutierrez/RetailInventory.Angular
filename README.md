@@ -23,6 +23,7 @@ This project was developed as part of the JMCloudLab portfolio to demonstrate en
 ### Product Management
 
 * Product Registration
+* Product Catalog
 * Product Listing
 * Inventory Integration
 
@@ -30,13 +31,15 @@ This project was developed as part of the JMCloudLab portfolio to demonstrate en
 
 * Purchase Registration
 * Dynamic Product Selection
+* Automatic Price Loading
 * Real-Time Cost Calculation
 * Inventory Update Integration
 
 ### Sales Management
 
 * Sales Registration
-* Stock Validation
+* Real-Time Stock Validation
+* Automatic Total Calculation
 * Inventory Synchronization
 
 ### User Experience
@@ -45,6 +48,10 @@ This project was developed as part of the JMCloudLab portfolio to demonstrate en
 * Sidebar Navigation
 * Feature-Based Routing
 * Reactive Forms
+* Angular Signals
+* Reusable Confirmation Dialogs
+* Snackbar Notifications
+* User Menu & Logout
 * Centralized API Configuration
 
 ---
@@ -61,6 +68,8 @@ This project was developed as part of the JMCloudLab portfolio to demonstrate en
 * Lazy Loading
 * Route Guards
 * HTTP Interceptors
+* Angular Material
+* Lucide Angular
 
 ### Security
 
@@ -108,6 +117,8 @@ src
 * Feature Isolation
 * Better Scalability
 * Easier Maintenance
+* Reusable Shared Components
+* Consistent User Experience
 * Enterprise-Ready Structure
 
 ---
@@ -181,33 +192,33 @@ Microservices
 
 ### Dashboard
 
-* Main Layout
+* Main Dashboard
 * Navigation Sidebar
 * Top Navigation Bar
+* Breadcrumb Navigation
 
 ### Products
 
-* Product Management
 * Product Registration
+* Product Catalog
 * Product Listing
 
 ### Purchases
 
-* Purchase Creation
+* Purchase Registration
 * Dynamic Item Management
-* Cost Calculation
+* Automatic Cost Calculation
 
 ### Sales
 
 * Sales Registration
-* Inventory Validation
-* Stock Synchronization
+* Real-Time Stock Validation
+* Automatic Total Calculation
 
 ### Inventory
 
 * Stock Monitoring
 * Kardex Visualization
-
 ---
 
 ## Backend Integration
@@ -257,16 +268,62 @@ Password: Admin123*
 
 ## Future Improvements
 
-* Unit Testing (Jasmine/Karma)
-* End-to-End Testing
-* State Management
-* Dark Mode Support
-* Real-Time Dashboard
+### Functional
+
+* Product Update
+* Product Deletion
+* Purchase History
+* Sales History
+* Inventory Adjustments
+
+### User Experience
+
+* Search and Filtering
+* Server-Side Pagination
+* Sorting
+* Export to Excel
 * Responsive Improvements
+* Dark Mode
+
+### Quality
+
+* Unit Testing
+* End-to-End Testing
 * Shared Component Library
+* Internationalization (i18n)
+
+### Technical
+
+* State Management (NgRx or Signal Store)
+* Performance Optimization
+* Environment-based Configuration
 
 ---
+## Roadmap
 
+### Completed
+
+- [x] JWT Authentication
+- [x] Dashboard
+- [x] Product Catalog
+- [x] Purchase Registration
+- [x] Sales Registration
+- [x] Inventory Overview
+- [x] Kardex
+- [x] Notification System
+- [x] Confirmation Dialogs
+- [x] User Menu & Logout
+
+### Planned
+
+- [ ] Product CRUD
+- [ ] Purchase History
+- [ ] Sales History
+- [ ] Search & Filtering
+- [ ] Server-Side Pagination
+- [ ] Export to Excel
+- [ ] Dashboard Analytics
+- [ ] 
 ## Related Backend Technologies
 
 This frontend integrates with a distributed backend platform built using:
@@ -285,6 +342,24 @@ This frontend integrates with a distributed backend platform built using:
 * Distributed Tracing
 
 ---
+## Screenshots
+
+### Login
+
+<img ...>
+
+### Dashboard
+
+<img ...>
+
+### Purchase Registration
+
+<img ...>
+
+### Product Catalog
+
+<img ...>
+
 
 ## Author
 

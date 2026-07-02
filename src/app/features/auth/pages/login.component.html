@@ -16,9 +16,7 @@
 
     </div>
 
-    <form
-      [formGroup]="loginForm"
-      (ngSubmit)="login()">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
 
       <div class="form-group">
 
@@ -26,10 +24,7 @@
           Usuario
         </label>
 
-        <input
-          type="text"
-          formControlName="userName"
-          placeholder="Ingrese usuario">
+        <input type="text" formControlName="userName" placeholder="Ingrese usuario">
 
       </div>
 
@@ -39,37 +34,16 @@
           Contraseña
         </label>
 
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Ingrese contraseña">
+        <input type="password" formControlName="password" placeholder="Ingrese contraseña">
 
       </div>
 
-      @if(errorMessage){
+      <button type="submit" [disabled]="loading() || loginForm.invalid">
 
-        <div class="error-message">
-          {{ errorMessage }}
-        </div>
-
-      }
-
-      <button
-        type="submit"
-        [disabled]="loading || loginForm.invalid">
-
-        @if(loading){
-
-          <span>
-            Ingresando...
-          </span>
-
+        @if (loading()) {
+        <span>Ingresando...</span>
         } @else {
-
-          <span>
-            Ingresar
-          </span>
-
+        <span>Ingresar</span>
         }
 
       </button>

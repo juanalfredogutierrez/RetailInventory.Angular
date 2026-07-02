@@ -12,6 +12,8 @@ import {
   PanelLeftClose,
   PanelLeftOpen
 } from 'lucide-angular';
+import { TokenService } from '../../core/services/token.service';
+import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 
 interface BreadcrumbItem {
   label: string;
@@ -21,13 +23,13 @@ interface BreadcrumbItem {
 @Component({
   selector: 'app-topbar-component',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule,UserMenuComponent],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
 })
 export class TopbarComponent {
   private readonly router = inject(Router);
-
+  private readonly tokenService = inject(TokenService);
   @Input() sidebarCollapsed = false;
 
   @Output() toggleSidebar = new EventEmitter<void>();
@@ -42,6 +44,9 @@ export class TopbarComponent {
 
   private readonly currentUrl = signal(this.router.url);
 
+  readonly currentUser = signal(
+    this.tokenService.getCurrentUser()
+  );
   readonly breadcrumb = computed(() => this.buildBreadcrumb(this.currentUrl()));
 
   constructor() {
@@ -84,5 +89,33 @@ export class TopbarComponent {
 
   handleMobileToggle(): void {
     this.toggleMobileSidebar.emit();
+  }
+  get avatar(): string {
+
+    const user = this.currentUser();
+
+    if (!user?.userName)
+      return '?';
+
+    return user.userName
+      .split(' ')
+      .map(x => x[0])
+      .join('')
+      .substring(0, 2)
+      .toUpperCase();
+
+  }
+  get displayRole(): string {
+
+    switch (this.currentUser()?.role) {
+
+      case 'ADMIN':
+        return 'Administrador';
+
+      default:
+        return this.currentUser()?.role ?? '';
+
+    }
+
   }
 }

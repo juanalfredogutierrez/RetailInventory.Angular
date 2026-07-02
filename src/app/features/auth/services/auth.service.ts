@@ -12,11 +12,10 @@ export class AuthService {
 
   private readonly http = inject(HttpClient);
 
-login(request: LoginRequest) {
-
-  return this.http.post<ApiResponse<string>>(
-    `${API.gateway}${API.auth.login}`,
-    request
-  );
-}
+  login(request: LoginRequest) {
+    return this.http.post<ApiResponse<string>>(
+      `${API.gateway}${API.auth.login}`,
+      request
+    );
+  }
 }

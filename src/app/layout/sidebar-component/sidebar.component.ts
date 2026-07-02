@@ -46,7 +46,7 @@ export class SidebarComponent {
     { label: 'Productos', route: '/productos', icon: Package },
     { label: 'Compras', route: '/compras', icon: ShoppingCart },
     { label: 'Ventas', route: '/ventas', icon: ReceiptText },
-    { label: 'Kardex', route: '/kardex', icon: Boxes }
+    // { label: 'Kardex', route: '/kardex', icon: Boxes }
   ];
 
   handleToggleSidebar(): void {

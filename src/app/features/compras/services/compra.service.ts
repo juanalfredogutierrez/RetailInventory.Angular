@@ -2,7 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../../../core/constants/api.constants';
 import { ApiResponse } from '../../../core/Model/api-response.model';
-import { CompraRequest } from '../models/compra-detalle.model';
+import { CompraRequest } from '../models/compra-request-model';
+
 
 @Injectable({
   providedIn: 'root'

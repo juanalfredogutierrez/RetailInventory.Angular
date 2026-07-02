@@ -1,10 +1,10 @@
 <div class="page-container">
 
   <!-- HEADER -->
-<div class="page-header">
-  <h1>Registrar compra</h1>
-  <p>Registra el ingreso de productos al inventario</p>
-</div>
+  <div class="page-header">
+    <h1>Registrar compra</h1>
+    <p>Registra el ingreso de productos al inventario</p>
+  </div>
 
   <div class="page-layout">
 
@@ -21,7 +21,7 @@
           </div>
 
           <button type="button" class="btn-secondary btn-sm" (click)="abrirModalProducto()">
-            + Nuevo producto
+            ⊞ Crear producto
           </button>
         </div>
 
@@ -34,7 +34,7 @@
               <label>Producto</label>
               <select formControlName="productoId">
                 @for (producto of productos(); track producto.productoId) {
-                <option [value]="producto.productoId">
+                <option [ngValue]="producto.productoId">
                   {{ producto.codigo }} - {{ producto.nombre }}
                 </option>
                 }
@@ -44,7 +44,8 @@
             <!-- Costo -->
             <div class="form-group span-3">
               <label>Costo Unitario</label>
-              <input type="number" formControlName="precioUnitario" />
+
+              <input type="text" [value]="'S/ ' + (form.get('precioUnitario')?.value | number:'1.2-2')" readonly />
             </div>
 
             <!-- Cantidad -->
@@ -56,45 +57,42 @@
             <!-- Subtotal actual -->
             <div class="form-group span-3">
               <label>Subtotal actual</label>
-              <input
-                type="text"
-                [value]="(subtotalActual | number:'1.2-2') ?? '0.00'"
-                readonly
-                class="readonly-input"
-              />
+              <input type="text" [value]="'S/ ' + (subtotalActual | number:'1.2-2')" readonly class="readonly-input" />
             </div>
 
             <!-- Observación -->
             <div class="form-group span-10">
               <label>Observación <span>(opcional)</span></label>
-              <textarea
-                rows="2"
-                formControlName="observacion"
-                placeholder="Agrega una observación si aplica..."
-              ></textarea>
+              <textarea rows="2" formControlName="observacion"
+                placeholder="Agrega una observación si aplica..."></textarea>
             </div>
           </div>
 
           <!-- RESUMEN DEL ITEM -->
+
           <div class="item-summary-bar">
-            <div class="summary-chip">
+
+            <div class="summary-chip compact">
               <span>Cantidad</span>
               <strong>{{ form.value.cantidad ?? 0 }}</strong>
             </div>
 
-            <div class="summary-chip">
+            <div class="summary-chip compact">
               <span>Costo</span>
-              <strong>{{ form.value.precioUnitario ?? 0 | number:'1.2-2' }}</strong>
+              <strong>S/ {{ form.value.precioUnitario ?? 0 | number:'1.2-2' }}</strong>
             </div>
 
-            <div class="summary-chip summary-chip--highlight">
+            <div class="summary-chip compact summary-chip--highlight">
               <span>Subtotal</span>
-              <strong>{{ subtotalActual | number:'1.2-2' }}</strong>
+              <strong>S/ {{ subtotalActual | number:'1.2-2' }}</strong>
             </div>
 
-            <button type="button" class="btn-primary btn-add" (click)="agregarProducto()">
-              + Agregar
+            <button class="btn-primary btn-add compact" type="button" (click)="agregarProducto()">
+
+              Agregar
+
             </button>
+
           </div>
 
         </form>
@@ -102,16 +100,30 @@
 
       <!-- DETALLE -->
       <div class="detalle-card">
+
         <div class="detalle-header">
+
           <div>
+
             <h3>Detalle de productos</h3>
-            <p>Productos agregados a la compra actual.</p>
+
+            <p>Productos agregados a la compra.</p>
+
           </div>
 
-          <div class="detalle-totals">
-            <span>Items: <strong>{{ detalles().length }}</strong></span>
-            <span>Total: <strong>{{ totalGeneral | number:'1.2-2' }}</strong></span>
+          <div class="detalle-info">
+
+            <strong>{{ detalles().length }}</strong>
+            <span>productos</span>
+
+            <span class="separator">•</span>
+
+            <span>Total</span>
+
+            <strong>S/ {{ totalGeneral | number:'1.2-2' }}</strong>
+
           </div>
+
         </div>
 
         <div class="table-wrapper">
@@ -130,12 +142,23 @@
               @for (item of detalles(); track $index) {
               <tr>
                 <td class="cell-product">{{ item.nombre }}</td>
-                <td>{{ item.precioUnitario | number:'1.2-2' }}</td>
+                <td>S/ {{ item.precioUnitario | number:'1.2-2' }}</td>
                 <td>{{ item.cantidad }}</td>
-                <td class="cell-total">{{ item.total | number:'1.2-2' }}</td>
+                <td class="cell-total"> S/ {{ item.total | number:'1.2-2' }}</td>
                 <td class="action-cell">
-                  <button type="button" class="btn-delete" (click)="eliminar($index)">
-                    ×
+                  <button type="button" class="btn-delete" (click)="eliminar($index)" title="Eliminar">
+
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4h8v2" />
+                      <path d="M19 6l-1 14H6L5 6" />
+                      <path d="M10 11v6" />
+                      <path d="M14 11v6" />
+
+                    </svg>
+
                   </button>
                 </td>
               </tr>
@@ -144,7 +167,12 @@
               @if (detalles().length === 0) {
               <tr>
                 <td colspan="5" class="empty-row">
+                  📦
+
                   No hay productos agregados
+
+                  Selecciona un producto y presiona
+                  "Agregar".
                 </td>
               </tr>
               }
@@ -168,12 +196,12 @@
 
         <div class="sidebar-metric">
           <span>Costo actual</span>
-          <strong>{{ form.value.precioUnitario ?? 0 | number:'1.2-2' }}</strong>
+          <strong>S/ {{ form.value.precioUnitario ?? 0 | number:'1.2-2' }}</strong>
         </div>
 
         <div class="total-box">
           <span>Total compra</span>
-          <strong>{{ totalGeneral | number:'1.2-2' }}</strong>
+          <strong>S/ {{ totalGeneral | number:'1.2-2' }}</strong>
         </div>
 
         <div class="sidebar-actions">
@@ -181,8 +209,10 @@
             Cancelar
           </button>
 
-          <button type="button" class="btn-primary btn-block" (click)="save()">
+          <button class="btn-primary btn-block" [disabled]="detalles().length===0" (click)="save()">
+
             Registrar Compra
+
           </button>
         </div>
       </div>

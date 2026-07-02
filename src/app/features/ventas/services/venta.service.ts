@@ -2,7 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../../../core/constants/api.constants';
 import { ApiResponse } from '../../../core/Model/api-response.model';
-import { VentaRequest } from '../models/venta-detalle.model';
+import { VentaRequest } from '../models/venta-request.model';
+
+
 
 
 @Injectable({

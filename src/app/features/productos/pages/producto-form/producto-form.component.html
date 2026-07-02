@@ -1,44 +1,84 @@
 <div class="form-card">
 
   <div class="form-header">
-    <h2>Nuevo Producto</h2>
-    <p>Registrar un nuevo producto en el catálogo</p>
+
+    <h1>Nuevo producto</h1>
+
+    <p>
+      Registra un nuevo producto para que pueda ser utilizado
+      en compras y ventas.
+    </p>
+
   </div>
 
   <form [formGroup]="form">
 
-    <div class="form-group">
-      <label>Código</label>
-      <input type="text" formControlName="codigo" placeholder="Ej. PROD-001">
+    <div class="form-grid">
+
+      <div class="form-group">
+
+        <label>Código</label>
+
+        <input
+          type="text"
+          formControlName="codigo"
+          placeholder="Ej. LAP-001">
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Precio</label>
+
+        <input
+          type="number"
+          formControlName="precio"
+          placeholder="0.00">
+
+      </div>
+
     </div>
 
     <div class="form-group">
+
       <label>Nombre</label>
-      <input type="text" formControlName="nombre" placeholder="Nombre del producto">
+
+      <input
+        type="text"
+        formControlName="nombre"
+        placeholder="Nombre del producto">
+
     </div>
 
     <div class="form-group">
+
       <label>Descripción</label>
-      <textarea rows="4" formControlName="descripcion" placeholder="Descripción del producto">
-      </textarea>
-    </div>
 
-    <div class="form-group">
-      <label>Precio</label>
-      <input type="number" formControlName="precio">
+      <textarea
+        rows="4"
+        formControlName="descripcion"
+        placeholder="Descripción del producto">
+      </textarea>
+
     </div>
 
     <div class="actions">
 
-      <button type="button" class="btn-primary" (click)="save()">
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="cancelar()">
 
-        Guardar
+        Cancelar
 
       </button>
 
-      <button type="button" class="btn-secondary" (click)="cancelar()">
+      <button
+        type="button"
+        class="btn-primary"
+        (click)="save()">
 
-        Cancelar
+        Guardar producto
 
       </button>
 
